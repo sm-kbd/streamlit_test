@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("Repeater Bot")
+st.title("MoCk BoT")
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -18,6 +18,7 @@ if prompt := st.chat_input("What is up?"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
+    response = ''.join([c.lower(), c.upper()][i % 2 != 0] for c, i in zip(prompt, range(1, len(prompt) + 1)))
     response = f"Repeater: {prompt}"
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
