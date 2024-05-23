@@ -2,6 +2,18 @@ import streamlit as st
 
 st.title("MoCk BoT")
 
+st.markdown(
+"""
+<style>
+    .st-emotion-cache-4oy321 {
+    flex-direction: row-reverse;
+    text-align: right;
+    }
+</style>
+""",
+unsafe_allow_html=True,
+)
+
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
