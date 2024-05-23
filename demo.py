@@ -5,7 +5,7 @@ st.title("MoCk BoT")
 st.markdown(
 """
 <style>
-    .st-emotion-cache-4oy321 {
+    .st-emotion-cache-1c7y2kd {
     flex-direction: row-reverse;
     text-align: right;
     }
@@ -29,7 +29,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # React to user input
-if prompt := st.chat_input("What is up?"):
+if prompt := st.chat_input("/clear to clear"):
     if prompt.strip() == "/clear":
         st.session_state.messages = []
         st.rerun()
