@@ -18,14 +18,18 @@ for message in st.session_state.messages:
 
 # React to user input
 if prompt := st.chat_input("What is up?"):
-    # Display user message in chat message container
-    st.chat_message("user").markdown(prompt)
-    # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    if prompt.strip() == "/clear":
+        st.session_state.messages = []
+        st.rerun()
+    else:
+        # Display user message in chat message container
+        st.chat_message("user").markdown(prompt)
+        # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": prompt})
 
-    response = ''.join([c.lower(), c.upper()][i % 2 == 0] for c, i in zip(prompt, range(1, len(prompt) + 1)))
-    # Display assistant response in chat message container
-    with st.chat_message("mockbob", avatar="mockbob.jpg"):
-        st.markdown(response)
-    # Add assistant response to chat history
-    st.session_state.messages.append({"role": "mockbob", "content": response})
+        response = ''.join([c.lower(), c.upper()][i % 2 == 0] for c, i in zip(prompt, range(1, len(prompt) + 1)))
+        # Display assistant response in chat message container
+        with st.chat_message("mockbob", avatar="mockbob.jpg"):
+            st.markdown(response)
+        # Add assistant response to chat history
+        st.session_state.messages.append({"role": "mockbob", "content": response})
