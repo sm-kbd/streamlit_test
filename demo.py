@@ -19,7 +19,6 @@ if prompt := st.chat_input("What is up?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     response = ''.join([c.lower(), c.upper()][i % 2 != 0] for c, i in zip(prompt, range(1, len(prompt) + 1)))
-    response = f"Repeater: {prompt}"
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         st.markdown(response)
