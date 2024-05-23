@@ -8,7 +8,12 @@ if "messages" not in st.session_state:
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
+    if message["role"] == "mockbob":
+        cm = st.chat_message(message["role"],  avatar="mockbob.jpg")
+    else:
+        cm = st.chat_message(message["role"])
+
+    with cm:
         st.markdown(message["content"])
 
 # React to user input
@@ -20,7 +25,7 @@ if prompt := st.chat_input("What is up?"):
 
     response = ''.join([c.lower(), c.upper()][i % 2 == 0] for c, i in zip(prompt, range(1, len(prompt) + 1)))
     # Display assistant response in chat message container
-    with st.chat_message("assistant"):
+    with st.chat_message("mockbob", avatar="mockbob.jpg"):
         st.markdown(response)
     # Add assistant response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.messages.append({"role": "mockbob", "content": response})
